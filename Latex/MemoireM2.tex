@@ -53,10 +53,117 @@
 
   \chapter{DevOps}
 
+  \section{culture}
+
+  \section{Infrastructure as code}
+
+  http://blog.octo.com/et-si-devops-nous-emmenait-vers-tdi-test-driven-infrastructure/
+
+  \section{Cloud Computing}
+
+    \subsubsection{Définition}
+    Il existe autant de réponse à « Qu’est-ce que le Cloud Comptine ? » que de distribution linux. J’ai pour ma part décider de baser mon analyse sur la définition fournit par NIST (National Institut of Standards and Technology):\\
+
+    \begin{quotation}
+      \emph{« Cloud Computing is a model for enabling ubiquitous, convenient,on-demand network access to a shared pool of configurable Computing resources (e.g., networks, servers, storage, applications, and services) that can be rapidly provisioned and released with minimal management effort or service provider interaction. This Cloud model is composed of five essential characteristics, three service models, and four deployment models. »}
+    \end{quotation}
+
+    \begin{quotation}
+      \emph{« Le Cloud Computing est un modèle qui permet un accès omniprésent, pratique et à la demande à un réseau partagé et à un ensemble de ressources informatiques configurables (comme par exemple : des réseaux, des serveurs, du stockage, des applications et des services) qui peuvent être provisionnées et libérées avec un minimum d’administration. »}\\
+    \end{quotation}
+
+    Pour simplifier, le Cloud Computing est la dématérialisation de l’informatique. C’est le fait de déporter toutes les opérations normalement effectuées sur nos ordinateurs sur des ordinateurs distants, autrement dit sur internet. L’ensemble de ses serveurs constituent le Cloud (Voir Figure \ref{Cloud Computing}).
+
+    \begin{figure}
+      \begin{center}
+        \includegraphics[scale=0.3]{images/CloudComputing.jpg}
+      \end{center}
+      \caption{Schématisation du Cloud Computing}
+      \label{Cloud Computing}
+    \end{figure}
+
+    \subsubsection{Un service à la demande et une flexibilité des ressources.}
+    Avec les applications Cloud, nous adaptons le flux de données à l'évolution de nos besoins: nous ne payons que pour ce que nous consommons. Et nous n'avons plus à nous soucier de manquer de capacité.
+
+    \subsubsection{Accès universel par le réseau}
+    Le terme de nuage représente bien le concept. Imaginons que nos ordinateurs nous suivent partout, que nous puissions y accéder n’importe où, n’importe quand depuis n’importe quel terminal. Imaginons un accès universel aux ressources stockés sur nos ordinateurs.
+
+    \subsubsection{Une mise en commun des ressources}
+    L'application de correctifs, la mise à niveau et le test d'applications peuvent occuper nos équipes informatique s plusieurs jours par mois. Grâce aux applications Cloud, cette problématique disparaît.\\
+
+    Cependant ce n’est pas si simple que cela. Il existe trois types de Cloud: le Cloud public (loué par des prestataires), le Cloud privé (créer et gérer par notre entreprise) et le Cloud hybride (un mélange des deux précédents).
+
+    \subsection{Le Cloud public}
+    Le Cloud public appartient à des prestataires de service qui louent l’utilisation de leurs serveurs en facturant leur utilisation à la demande. Nous payons le flux de données échangé. Il dispose principalement de quatre modèles qui correspondent à des besoins bien distincts: le IAAS, le PASS, le SAAS et le STAAT.
+
+      \subsubsection{Le Cloud IAAS ou Infrastructure As A Service (infrastructure en tant que service)}
+      Le IAAS correspond à une infrastructure informatique (serveurs, réseaux, stockage) hébergé chez le prestataire de service. Nous n’avons pas besoin d’acheter le matériel nécessaire à notre infrastructure, nous nous contentons de la louer mais la gérons comme bon nous semble. Nous installons les serveurs que nous souhaitons utiliser et nous gérons l’ensemble des OS installés sur ces derniers. IAAS est utile si l’on désire créer ses propres plateformes pour ensuite y déployer des applications comme sur des serveurs locaux.
+
+      \subsubsection{Le Cloud PAAS ou Plateform As A Service (plateforme en tant que service)}
+      Le PAAS constitue l’utilisation par le biais d’internet de plateformes sur lesquelles nous pouvons déployer nos propres applications. C’est le niveau d’exécution des logiciels. Nous louons une plateforme, c’est à dire une machine avec un OS, le tout prêt à l’emploi.
+
+      \subsubsection{Le Cloud SAAS ou Software As A Service (logiciel en tant que service)}
+      Il s’agit d’utiliser des logiciels directement sur le Cloud, la plupart du temps via un navigateur web. Nous n’avons pas d’achat de licence, pas d’installation sur nos propres terminaux, pas d’entretiens. Le logiciel « tourne » sur des serveurs dans des datacenters (Voir Figure \ref{Google Cloud}).
+
+      \begin{figure}
+        \begin{center}
+          \includegraphics[scale=1]{images/googleDrive.png}
+        \end{center}
+        \caption{Exemple: la suite bureautique proposée par Google}
+        \label{Google Cloud}
+      \end{figure}
+
+      \subsubsection{Le STAAT ou Storage As A Service (stockage en tant que service)}
+      Le STAAT permet simplement des stocker nos données.
+
+    \subsection{Le Cloud privé}
+    Le Cloud privé est un Cloud propre à notre entreprise. A l’aide d’outils de virtualisation il est possible de transformer les serveurs existants au sein de l’entreprise. Cela créé un réseau puissant disponible, comme le Cloud public, à tout moment et à tout endroit mais géré entièrement par notre entreprise.
+
+    \subsection{Las avantages du Cloud Computing}
+    Les avantages du Cloud Computing sont nombreux. Si l’accessibilité est l’avantage le plus visible, il faut remarquer que l’utilisation du Cloud Computing permet à l’entreprise d’avoir une grande agilité, allant du démarrage rapide de son activité à un déploiement tout aussi rapide de nouvelles applications et donc un gain de temps et d’argent pour l’entreprise.\\
+
+    De plus avec l’utilisation d’un Cloud public l’entreprise n’a plus d’investissement lourd en capital informatique, plus de dépendance en perte de temps et en entretient des infrastructures. Gains de places et de performances sont au rendez-vous.\\
+
+    Cependant il faut soulever un petit bémol. En effet la contrepartie de tous cela est une dépendance totale envers internet et les prestataires de service. Ainsi qu’un coût croissant à mesure que les besoins de l’entreprises grandissent.
+
+    \subsection{Quel Cloud choisir?}
+    Si nous disposons déjà de serveurs et que nos besoins sont constants nous opterons pour le Cloud privé. Nous virtualiserons notre infrastructure et profiter de notre propre Cloud. Nos investissements sont ainsi préservés et nous gagnerions en productivité.\\
+
+    En revanche, si nous ne disposons pas de serveurs ou que nous commençons tout juste notre activité et que nous ne souhaitons pas investir dans un parc informatique de serveur complet nous opterons pour un Cloud public. Economie et flexibilité sont au rendez-vous avec les services à la demande.\\
+
+    Enfin si nous possédons des serveurs mais que notre activité fluctue beaucoup, nous demandant parfois des capacités plus fortes nous opterons pour le Cloud hybride. Nous concernerons ainsi notre autonomie avec notre Cloud privé et étendrons notre capacité ponctuellement avec le Cloud public.\\
+
+    Pour conclure, si le Cloud Computing offre une grande disponibilité et une adaptabilité exemplaire, qui en font un service formidable, il n’en reste pas moins dépendant d’internet et les risques en matières de sécurité sont encore mal évalués.
+
   \chapter{Intégration Continue}
 
     \section{Histoire}
-    L'idée de l'Intégration Continue a été développée par la communauté Extreme Programming et a été décrit par Kent Beck dans son livre « Extreme programming explained » \cite{Bec99}. Martin Fowler a également été l'un des premiers contributeurs qui ont écrit sur l’intégration continue \cite{Fow00}. Plus tard, le travail a été poursuivi par Paul Duvall qui a écrit tout un livre à propos de l’intégration \cite{Duv07}.
+    Dans l’industrie logicielle l’intégration d’un projet logiciel est souvent un moment lourd et douloureux. La mise en commun des différents modules composants l’application entraine de grave problème d’intégration. Les modules fonctionnent correctement individuellement mais se confrontent à des problèmes de synergie. La résolution de ces problèmes demande un effort important qui s’accroisse avec la complexité du système. L’introduction des techniques et méthodologie de l’Intégration Continue, estompent les problèmes d’intégration jusqu’à les réduire en un non-évènement.\\
+
+    \begin{quotation}
+      \emph{« Continuous integration is the practice of making small well-defined changes to a project’s code base and getting immediate feedback to see whether the test suites still pass. »}
+    \end{quotation}
+
+    \begin{quotation}
+      \emph{« L'intégration continue est la pratique de faire de petits changements bien définis à la base du code source d'un projet et d'obtenir une rétroaction immédiate pour voir si les suites de test passent toujours. »} Paul Duvall \cite{Duv07}.\\
+    \end{quotation}
+
+    L’idée d'Intégration Continue a été développée par la communauté Extreme Programming (XP) et a été décrit par Kent Beck dans son livre « Extreme programming explained » \cite{Bec99}, articulé autour de douze pratiques de développement agile. Son but étant de prévenir les problèmes décrit ci-dessus désignés comme « integration hell » (l’enfer de l’intégration) par Ron Jeffries en 2001. Martin Fowler a également été l'un des premiers contributeurs ayant écrit sur l’intégration continue \cite{Fow00}. Plus tard, les travaux ont été poursuivi par Paul Duvall qui a écrit tout un livre à propos de l’intégration \cite{Duv07}.
+
+    Martin Fowler \cite{Fow00} désigne 10 principes clés pour réussir un Intégration Continue efficace :\\
+
+    \begin{itemize}
+      \item maintenir un référentiel de source unique,
+      \item automatiser la construction de l’application (build),
+      \item automatiser les tests,
+      \item valider quotidiennement les modifications au niveau de la branche principale du contrôle de version (commit),
+      \item créer une build d’intégration à chaque commit sur la branche principale,
+      \item assurer une build rapide,
+      \item effectuer les tests dans un environnement clone de la production,
+      \item assurer la disponibilité pour tous des derniers livrables,
+      \item assurer une visibilité pour tous,
+      \item automatiser le déploiement.\\
+    \end{itemize}
 
     \section{L'Intégration Continue comme un processus}
     L’Intégration Continue est un processus où le logiciel est construit à chaque changement. Cela signifie que lorsqu’une modification apportée par un développeur est détectée dans le code source, une construction automatique est déclenchée sur une machine de construction séparé. La construction contient plusieurs étapes prédéfinies comme la compilation, les tests, la génération de métrique du code source et le déploiement - entre autres. Une fois la construction terminé un rapport est envoyé aux membres du projet spécifié. Le rapport de compilation indique le résultat de chaque étape de la construction avec des informations détaillées sur les erreurs possibles qui ont pu survenir.\\\\
@@ -230,7 +337,7 @@
         Le niveau suivant est le test d'intégration. Dans ce contexte d’Intégration nous devons vérifier que les modules individuels du logiciel fonctionnent aussi en tant que groupe.\\
 
         \begin{quotation}
-          \emph{« Le test d'intégration identifie les problèmes qui se produisent lors de la combinaison d'unités. En utilisant un plan de test exigeant que vous testiez chaque unité et que vous vérifiez la viabilité de chacune d'elles avant de les combiner, vous savez que les erreurs découvertes lors de la combinaison d'unités concernent probablement l'interface entre les unités. Cette méthode réduit le nombre de possibilités à un niveau beaucoup plus simple d'analyse. »} Microsoft \cite{Mic16}\\
+          \emph{« Le test d'intégration identifie les problèmes qui se produisent lors de la combinaison d'unités. En utilisant un plan de test exigeant que vous testiez chaque unité et que vous vérifiez la viabilité de chacune d'elles avant de les combiner, vous savez que les erreurs découvertes lors de la combinaison d'unités concernent probablement l'interface entre les unités. Cette méthode réduit le nombre de possibilités à un niveau beaucoup plus simple d'analyse. »} Microsoft \cite{Mic16}.\\
         \end{quotation}
 
         Le troisième niveau teste les API d’un point de vue externe, sans se préoccuper de fonctionnement interne du système. Le test système analyse le flux de retour de l’API en fonction de son flux d’entrée afin  de détecter les défauts à la fois dans les inter-assemblages mais également au sein du système dans son ensemble. Cette méthode est appelé « boîte noire ».\\
@@ -248,10 +355,24 @@
          \end{figure}
 
         \subsubsection{Exécuter les tests plus rapides en première}
+        Lorsque le logiciel se développe le nombre de tests augmente, ce qui se traduit par une hausse du temps d’exécution des tests leur de la build d’intégration. Si l’ensemble des tests est exécuté en une seule fois cela peut prendre du temps et ainsi faire perdre le bénéfice de rétroaction rapide. Pour faire face à ce syndrome, les tests doivent être classés de plus rapides au plus lents en terme d’exécution. Les tests peuvent aussi être divisés en plusieurs étapes. Les rapports seront envoyés à la fin de chaque étape garantissant un feedback rapide.\\
+
+        Les tests unitaires nécessitent peu de temps à mettre en place et sont les tests les plus rapides à exécuter. L’exécution d’un test unitaire ne doit pas excéder la fraction de seconde. Ces tests sont exécutés de nombreuses fois par jour par développeurs. La rapidité d’exécution est primordiale sinon les tests deviennent une méthodologie de développement à éviter ce qui est contraire au principe de l’Intégration Continue \cite{Duv07}. Les tests unitaires sont donc de bons candidats pour être exécuter au cours de la première étape.\\
+
+        La configuration des tests d'intégration et des tests système nécessitent beaucoup plus de temps que celle des tests unitaires. La mise en place la (des) base(s) de données avec des données de test et de lancement réel de l’application sont des tâches relativement chronophages. L’exécution de ces tests peut être une étape longue. Les tests d’intégration et système peuvent être exécutées dans des étapes ultérieures ou à des intervalles périodiques. Par exemple nous pouvons exécuter une suite complète de tests de plusieurs heures tous les soirs. Nous appelons ce processus Daily Build \cite{McC96}.
 
         \subsubsection{Ecrire des tests d’échecs}
+        L’écrire et l’exécution automatique des tests avec l’Intégration Continue diminue la fréquence des logiciels défectueux. Mais l’Intégration Continue n’est pas infaillible \cite{Duv07}. Si un défaut est trouvé, il doit être immédiatement fixé et pour éviter qu’elle se reproduise, un test défectueux devra être implémenté. L'idée sous-jacente est d’améliorer continuellement la qualité de l’application.
+
+      \subsection{Qualimétrie}
 
       \subsection{Base de données d’intégration}
+      L’Intégration Continue ne se limite pas à la construction du code source, elle peut également être utilisée dans le développement de base de données. Les bases de données sont des parties intégrantes des applications et ont donc besoin d’être intégré dans le processus d’Intégration Continue. La création d’une base de données fonctionnelle lors d’une build d’intégration nécessite un ensemble de scripts stocké dans le référentiel de contrôle de version. Ces scripts comprennent les définitions des tables, les procédures stockées, le partitionnement... L’exécution des tests fonctionnels nécessite des données « réelles » afin de garantir un environnement proche de la production. Des scripts de « données », exécuter après la création de la base de données complètent la mise en place d’une base de données fonctionnelle.\\
+
+      Par exemple, lorsqu’un développeur ou un administrateur de base de données (DBA) apporte une modification à script de base de données et le valide au niveau du système de contrôle de version (check-in), la build d’intégration (la même que celle utilisée pour l’intégration du code source) construit la nouvelle base de données et lance les tests.
+
+      \subsubsection{Test unitaire sur les fonctions de base de données}
+      Pour des raisons de sécurités et de performances les fonctions propres aux bases de données sont stockées et exécutées par elles-mêmes. On les appelle alors « procédures stockées ». Comme pour les méthodes de l’application les procédures doivent être testées et automatisées par des scripts qui seront exécutés lors de la build d’intégration.
 
       \subsection{Inspection Continue}
 
@@ -274,6 +395,63 @@
         \subsubsection{Créer des build feedback reports}
 
         \subsubsection{Capacité à effectuer un rollback}
+
+      \subsection{La dockerisation}
+      Le site officiel de Docker définit son outils comme tel:\\
+
+      \begin{quotation}
+        \emph{« Docker est un outil qui peut empaqueter une application et ses dépendances dans un conteneur virtuel, qui pourra être exécuté sur n’importe quel serveur Linux »}\\
+      \end{quotation}
+
+      Le mot clé de cette définition est conteneur. Qu’est ce qu’un conteneur?
+
+        \subsubsection{Le conteneur}
+        Le conteneur n’est pas une notion nouvelle, ce n’est pas une notion inventé par Docker. Linux a un système de conteneur qui s’appelle LXC (LinuX Container) qui permet de gérer cet empaquetage.\\
+
+        Un conteneur est globalement une sorte de boite, un peu comme une machine virtuelle, qui va être complètement isoler du système d’exploitation dans laquelle nous allons pouvoir installer toutes les librairies dont a besoin notre application pour fonctionner ainsi que notre application. Le conteneur étant complètement isolé du reste nous allons pouvoir la distribuer un peu partout, indépendamment du système d’exploitation.
+
+        \subsubsection{Les avantages}
+        Actuellement nos applications ont besoin de plus en plus de technologies pour fonctionner. Prenons un cas concret avec une application PHP.\\
+
+        Une application PHP a besoin d’une certaine version de PHP, d’images magiques (pour la conversion d’images), d’une base de données, d’un système de cache, d’un serveur web (Nginx ou Apache), d’un indexeur (Elasticsearch)… Pour au final nous retrouver avec une application nécessitant de nombreuses dépendances.\\
+
+        Le problème est que lorsque nous travaillons avec un administrateur système ou un hébergeur tier le déploiement de notre application peut rapidement s’avérer fastidieuse. Ces derniers devront installer sur chaque serveur de déploiement les dépendances requises pour le bon fonctionnement de notre application. En tant que développeur nous ne sommes pas forcément sensible à toutes les problématiques liées aux serveurs ce qui créé un climat hostile entre les développeurs et les administrateurs systèmes.\\
+
+        Le gros avantage du conteneur est que ce dernier va pouvoir être livré avec l’intégralité des dépendances liées à notre application.
+
+        \subsubsection{Conteneur VS Machine virtuelle (VM)}
+        Ce que nous venons de décrire est exactement le principe de fonctionnement d’une VM. Pour comprendre la différence entre ces deux technologies voici un petit schéma issu du site officiel de Docker (Voir Figure \ref{Virtual Machine}).
+
+        \begin{figure}
+          \begin{center}
+            \includegraphics[scale=0.2]{images/virtualMachine.png}
+          \end{center}
+          \caption{Schéma de fonctionnement d'une machine virtuelle}
+          \label{Virtual Machine}
+        \end{figure}
+
+        Voici la structure actuelle d’un serveur que l’on a avec des machines virtuelles. Nous nous retrouvons avec une infrastructure et par dessus un système d’exploitation qui va ensuite faire fonctionner diverses machines virtuelles. Pour schématiser nous avons un ordinateur dans un ordinateur. Le problème de cette structure est la redondance des système d’exploitation. Si notre serveur héberge x machine(s) virtuelle(s), nous aurons x système(s) d’exploitation(s) installer sur notre serveur, ce qui consomme beaucoup de ressources mémoires et processeurs.\\
+
+        Le système de conteneur nous permet de nous absoudre de cette contrainte et te faire fonctionner nos application directement sur le système d’exploitation du serveur hôte. Nous avons ainsi plus besoin de virtualiser les différents systèmes d’exploitations de nos applications. Ce qui va alléger notre structure serveur (Voir Figure \ref{Container}).
+
+        \begin{figure}
+          \begin{center}
+            \includegraphics[scale=0.2]{images/container.png}
+          \end{center}
+          \caption{Schéma de fonctionnement d'un conteneur}
+          \label{Container}
+        \end{figure}
+
+        \subsubsection{Les avantages}
+        Les avantages de l’utilisation de conteneur sont nombreux. Nous allons nous intéressez aux quatre principaux, les gains en performance, la probabilité des conteneurs, leur scalabilité et les facilités de déploiement.\\
+
+        Un système d’exploitation s’appuie sur de nombreux processus coûteux en mémoire et en CPU (temps de calcul d’un ordinateur). La réduction du nombre de systèmes d’exploitation à un unique OS tournant sur notre serveur hôte augmente considérablement les performance de ce dernier.\\
+
+        Le système de boite isolée rend la technologie des conteneurs beaucoup plus portable. Si nous voulons transférer une machine virtuelle d’un serveur A à un serveur B nous devons effectuer un snapshot intégral de notre 1 VM et le transférer. Le problème est qu’une machine virtuelle pèse lourd. Du coup le transfert d’une VM prendre beaucoup de temps.\\
+
+        Le troisième avantage du conteneur est qu’il est beaucoup plus facilement scalable. Nous allons pouvoir bouger nos petits boîtes très rapidement d’un serveur à l’autre, et même les faire évoluer en terme de performance.\\
+
+        Le dernier avantage que nous allons abordé est lié à la faculté de portable et scalable de nos conteneurs est le déploiement de ces derniers. Déployer un conteneur va être très simple. Vu qu’un conteneur est léger et qu’il embarque l’intégralité des dépendances nécessaires au bon fonctionnement de notre application nous allons pouvoir envoyer à notre administrateur système ou notre hébergeur l’intégralité de notre environnement de production.
 
       \subsection{La « bêta perpétuelle »}
       Le principe de la « bêta perpétuelle » a été introduit pour la première fois par Tim O’Reilly dans le manifeste du Web 2.0, qui expose le principe selon lequel:\\
@@ -309,7 +487,7 @@
         \subsubsection{Conclusion}
         Le concept de la « bêta perpétuelle » est présent chez de nombreux géants du Web tel que Google, Facebook, Amazon, Twitter, Flickr… Peu en font mention dû à la mauvaise image du terme « bêta », qui pour la conscience collective, se réfère à un produit non fini et peu fiable. Prenons en exemple Gmail, la boite aux lettres mails développé par Google, qui jusqu’en 2009 intégrait la mention « bêta » dans son logo. De petites fonctionnalités unitaires sont fréquemment proposés aux utilisateurs. En fonction de leur niveau d’adoption Google les intègrent ou non à la version standard de son service.
 
-      \subsection{Le « Zero downtime deployment »}
+        \subsection{Le « Zero downtime deployment »}
 
           \subsubsection{Les patterns}
           Blue/Green Deployment\\
