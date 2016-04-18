@@ -36,6 +36,9 @@
   \tableofcontents                % Table des matières.
 
   \chapter{Introduction}
+  Depuis maintenant quelques années (il est difficile de donner une date précise), les DSI s’appuient sur la mouvance agile afin de mener à bien leurs projets. Aujourd’hui, les patterns agiles arrivent à maturité et offrent un éventail de méthodologies adaptables à tous les contextes. Les méthodes agiles garantissent la satisfaction du client et non la conformité aux termes d’un contrat de développement. Elles sont centrées sur la satisfaction de besoin du client et non sur les termes contractuels du projet. Nous n’allons pas aborder en profondeur le concept de l’agilité, ceci n’est pas le propos de ce mémoire, mais nous allons tout de même faire un petit rappel des idées fortes de cette méthodologie. Il faut des cycles courts, quelques semaines tout au plus, et découper le projet en petites tâches puis les hiérarchiser en fonction du besoin. Cela permet d’éviter le superflu et de se concentrer au début de chaque cycle sur ce qui a de la valeur pour l’utilisateur final. Le feedback permanent devient la règle d’or, avec des validations à chaque étape et des techniques ludiques d’évaluation de l’utilité des fonctions. L’agilité offre une meilleure visibilité et permet d’éviter les dérives observées lorsque les développeurs sont isolés. Le changement est autorisé voir encouragé, même tardivement,  car c’est un avantage décisif pour le client. Cela permet de ne pas se priver des bonnes idées en cours de route et surtout d’éliminer les mauvaises idées lancées au début du projet. Les méthodes agiles favorisent la co-construction, en intégrant l’annonceur lui-même dans le travail quotidien et en responsabilisant la totalité de l’équipe de développement, créant ainsi un véritable esprit collaboratif et l’ensemble du projet en gagne en qualité.\\
+
+  Cependant l’agilité, lorsqu’elle est exclusivement cantonnée au développement, se trouve néanmoins freinée par les tâches d’exploitation. Le mouvement DevOps a pour objectif d’étendre les pratiques agilistes à la livraison et au déploiement du projet.
 
     \section{Motivation}
 
@@ -52,10 +55,31 @@
     \section{Structure du mémoire}
 
   \chapter{DevOps}
+  Le mouvement DevOps, contraction de « Development » et « Operational » tente de répondre à la problématique, certainement aussi ancienne que les DSI, qu’est la frontière qui sépare les développeurs (ceux qui écrivent le code source) et l’exploitation (ceux qui déploient et exploitent).\\
 
-  \section{culture}
+  \begin{figure}
+    \begin{center}
+      \includegraphics[scale=1.5]{images/devops.png}
+    \end{center}
+    \caption{DEV + OPS}
+    \label{Devops}
+  \end{figure}
 
-  \section{Infrastructure as code}
+  Les attentes et perspectives autour de Devops sont nombreuses :\\
+
+  \begin{itemize}
+    \item \textbf{Des cycles de déploiement plus courts} : les DevOps jouent un rôle clé dans la réduction du temps du cycle de déploiement des logiciels, passant de quelques semaines à seulement quelques heures, permettant une plus grande flexibilité quant aux nouvelles fonctionnalités et changements à apporter au produit initial.
+    \item \textbf{Mise à disposition de nouveaux services plus rapidement} : des déploiements fréquents associés à des délais de livraison plus rapides permettent une agilité opérationnelle.
+    \item \textbf{Une satisfaction client améliorée} : grâce à des applications ciblées et de qualité, conformes aux retours clients end to end.
+    \item \textbf{Des coûts réduits} : L’automatisation permet aux équipes de réaffecter des ressources précieuses à des tâches à plus haute valeur.
+    \item \textbf{Conformité et Gouvernance} : Automatisation du tracking et reporting end-to-end sur les phases de livraison/déploiement contenu.\\
+  \end{itemize}
+
+  \section{« The Wall of Confusion »}
+
+  \section{La Culture}
+
+  \section{« Infrastructure As Code »}
 
   http://blog.octo.com/et-si-devops-nous-emmenait-vers-tdi-test-driven-infrastructure/
 
@@ -76,7 +100,7 @@
 
     \begin{figure}
       \begin{center}
-        \includegraphics[scale=0.3]{images/CloudComputing.jpg}
+        \includegraphics[scale=0.3]{images/CloudComputing.png}
       \end{center}
       \caption{Schématisation du Cloud Computing}
       \label{Cloud Computing}
@@ -238,7 +262,7 @@
       \subsection{Le développeur}
       !!!!!!!!!!!!!!!!! You build it, you run it !!!!!!!!!!!!!!!!!
 
-      Pratiquer l’Intégration Continue exige de la discipline de la part des développeurs. Ils devront appliquer avec rigueur les pratiques de développement vus précédemment. Une fois le développement de la tâche effectué, le développeur doit exécuter une build sur sa propre machine de développement. On appelle cela une build privée. Cette étape permet de vérifier que les modifications apportées n’ont pas endommagé l'intégration avec le reste du code source. Il est important d'exécuter la build privée avant de valider les changements dans le référentiel de contrôle de version, car soumettre un code cassé peut empêcher les autres développeurs de travailler. Une fois l’exécution de la build privée avec succès, le développeur peut valider les modifications, et les tests. Si l'intégration de la build échoue malgré ses précautions, réparer cette build est la priorité numéro un.
+      Pratiquer l’Intégration Continue exige de la discipline de la part des développeurs. Ils devront appliquer avec rigueur les pratiques de développement vus précédemment. Une fois le développement de la tâche effectué, le développeur doit exécuter une build sur sa propre machine de développement. On appelle cela une build privée. Cette étape permet de vérifier que les modifications apportées n’ont pas endommagé l'intégration avec le reste du code source. Il est important d'exécuter la build privée avant de valider les changements dans le référentiel de contrôle de version, car soumettre un code erroné peut empêcher les autres développeurs de travailler. Une fois l’exécution de la build privée avec succès, le développeur peut valider les modifications, et les tests. Si l'intégration de la build échoue malgré ses précautions, réparer cette build est la priorité numéro un.
 
       \subsection{Le référentiel de contrôle de version}
       L'intégration continue ne peut pas se faire sans référentiel de contrôle de version. Le référentiel de contrôle de version, également connu sous le nom de gestionnaire de code source (SCM), est un système utilisé pour stocker le code source et d'autres aspects du logiciel (comme la documentation) de manière centralisée. Il assure également le suivi de l'historique des versions et modifications effectuées au cours du développement. Les développeurs de logiciels ont la possibilité de revenir à une version antérieure ou la révision d'un logiciel, ou de prendre connaissances des changements apportés sur toute révision donnée. Ce référentiel fournit un point d'accès unique au code source pour les développeurs et le système d’Intégration Continue. Il peut être constitué de différentes branches du logiciel stocké. Une branche peut être créée pour la réécriture majeure d’un morceau de code ou pour le prototypage d’une idée intéressante qui pourrait ne pas se retrouver dans le produit final. La build d’intégration est exécuté sur la branche principale du référentiel de contrôle de version \cite{Duv07}. « Master » est la branche de code source où la plupart de la mise au point a lieu. Certains systèmes de contrôle de version appellent cela aussi « tunk » ou « head ». La ligne principale se doit d’être toujours stable et la build d’intégration ne doit jamais échouée quand elle est intégrée au référentiel.
@@ -375,12 +399,44 @@
       Pour des raisons de sécurités et de performances les fonctions propres aux bases de données sont stockées et exécutées par elles-mêmes. On les appelle alors « procédures stockées ». Comme pour les méthodes de l’application les procédures doivent être testées et automatisées par des scripts qui seront exécutés lors de la build d’intégration.
 
       \subsection{Inspection Continue}
+      Le code source peut être examiné manuellement et/ou automatiquement. La revue de code manuelle peut être effectuée selon deux principes, le « pair programming » (écriture du code en binôme) ou le « code review » (session collective de relecture du code). Elle améliore la qualité algorithmique et syntaxique du code source de l’application et permet aux développeurs d’échanger sur les bonnes pratiques. Pour une revue de code automatique, de nombreux analyseurs de code statique sont disponibles selon les langages de développement. Ces outils analysent les fichiers sources dans le but de souligner les violations de règles prédéfinies propre au langage et d’améliorer la syntaxe de nos lignes de code.\\
+
+      La différence entre la revue de code manuelle faite par des humains et la revue de code automatique  faite par des outils d’analyses est double. Exécuter les analyseurs  de code statique est peu cher et une fois automatisé ils garantissent une relative propreté au code source. De plus un ordinateur est toujours objectif et ne se lasse pas d’inspecter l’intégralité du code à chaque fois qu’un changement est engagé dans le référentiel de contrôle de version.\\
+
+      Les analyses statiques de code automatisé sont efficientes pour des grandes bases de code. Elles permettent aux développeurs de se concentrer sur les parties importantes. Elles offrent des métriques de qualité sous la forme de rapport d’inspection après chaque exécution. Les revues automatisées ne remplacent pas les revues manuelles, elles permettent de recentrer l’intelligence humaine là où elle est nécessaire.\\
+
+      De nombreux IDE (environnement de développement intégré) intègrent des fonctionnalités d’inspection pour aider les développeurs dès l’écriture du code avec une mise en forme automatisée, la mise en évidence des variables non utilisées, l’utilisation illégale de certain élément… Il est fortement encouragé de les utiliser mais ne remplace en aucun cas les revues de code.\\
+
+      Il existe également des outils qui proposent de réécrire certain bout de code selon une convention particulière, de détecter les blocs de code en double…
+
 
         \subsubsection{Différences entre inspection et test}
+        Le test (vu précédemment) est dynamique et exécute l’application, ou un fragment de l’application, pour tester les fonctionnalités. L’inspection, quant à elle, analyse le code selon un ensemble de règles prédéfinies. Les deux sont des concepts similaires dans le sens ou aucun ne modifient le code source, ils ne font que remonter les problèmes résidant dans l’application.
 
         \subsubsection{Rapport d’inspection}
+        Les outils d’analyse statique de code fournissent un grand nombre de mesures et de rapports, encore faut-il les interpréter. Depuis quelques décennies des chercheurs étudient ces mesures afin de trouver une corrélation entre les défauts soulignés par les analyses et le code source.\\
+
+        Une des principales mesures étudiée est la complexité cyclomatique, qui quantifie la complexité du code source en comptant le nombre de chemins distincts au travers d'un programme représenté sous la forme d'un graphe \cite{Kan03}. Les analystes suggèrent une complexité de 10 car plus grand est ce nombre, plus important sera le risque de défauts \cite{Wat96}. Le moyen le plus efficace pour réduire la complexité cyclomatique d’une application est d'appliquer la technique de la méthode d'extraction et de distribuer la complexité en petits méthodes, plus faciles à gérer, et donc plus testable, \cite{Duv07}.\\
+
+        Outre les problèmes de complexités les rapports d’inspection nous fournissent des mesures sur des problèmes liés à l’architecture de notre application ; « l’afferent coupling » et « l’efferent coupling ». Ces métriques comptent les nombres de dépendances vers, où à partir d’un objet soulignant ainsi les risques de responsabilités ou de dépendances trop fortes. Elles permettent de déterminer le niveau de risque dans le maintien et l’évolutivité du code. Duvall introduit l'utilisation de ces deux valeurs combinées pour calculer une valeur d'instabilité.\\
+
+        \begin{center}
+            $Instability=\frac{EfferentCoupling}{EfferentCoupling + AfferentCoupling}$\\
+        \end{center}
+
+        La compréhension de ces mesures et de l'analyse des rapports d'inspection peut une réelle plus-value sur le temps investi. Les problèmes de maintenabilité peuvent être repérés dès le début et les risques de défauts peuvent être réduits.
+
 
     \section{Déploiement Continue}
+    L'un des objectifs de l’Intégration Continue est d'avoir un logiciel prêt et fonctionnel pour le déploiement à tout moment du développement. Toutes les étapes vues précédemment sont des parties du processus de déploiement visant à générer les artefacts de logiciels fournis avec les dernières modifications de code disponibles dans un environnement de test \cite{Duv07}. Une fois l’application packagée il est possible de l'installer automatiquement sur les serveurs de production avec le Déploiement Continue. Pour cela, nous avons six étapes de haut niveau:\\
+    \begin{itemize}
+      \item étiqueter les actifs d'un référentiel,
+      \item produire un environnement propre, exempt d'hypothèses,
+      \item générer et étiqueter une version directement à partir du référentiel et l'installer sur la machine cible,
+      \item effectuer les tests avec succès à tous les niveaux dans un clone de l'environnement de production,
+      \item créer des rapports de rétroaction de build,
+      \item	si nécessaire, la release peut être annulée en utilisant des étiquettes dans le système de contrôle de version.\\
+    \end{itemize}
 
       \subsection{Les bonnes pratiques du Déploiement Continue}
 
@@ -420,7 +476,7 @@
         Le gros avantage du conteneur est que ce dernier va pouvoir être livré avec l’intégralité des dépendances liées à notre application.
 
         \subsubsection{Conteneur VS Machine virtuelle (VM)}
-        Ce que nous venons de décrire est exactement le principe de fonctionnement d’une VM. Pour comprendre la différence entre ces deux technologies voici un petit schéma issu du site officiel de Docker (Voir Figure \ref{Virtual Machine}).
+        Ce que nous venons de décrire est exactement le principe de fonctionnement d’une VM. Pour comprendre la différence entre ces deux technologies voici un petit schéma issu du site officiel de Docker (Voir Figure \ref{Virtual Machine}).\\
 
         \begin{figure}
           \begin{center}
@@ -432,7 +488,7 @@
 
         Voici la structure actuelle d’un serveur que l’on a avec des machines virtuelles. Nous nous retrouvons avec une infrastructure et par dessus un système d’exploitation qui va ensuite faire fonctionner diverses machines virtuelles. Pour schématiser nous avons un ordinateur dans un ordinateur. Le problème de cette structure est la redondance des système d’exploitation. Si notre serveur héberge x machine(s) virtuelle(s), nous aurons x système(s) d’exploitation(s) installer sur notre serveur, ce qui consomme beaucoup de ressources mémoires et processeurs.\\
 
-        Le système de conteneur nous permet de nous absoudre de cette contrainte et te faire fonctionner nos application directement sur le système d’exploitation du serveur hôte. Nous avons ainsi plus besoin de virtualiser les différents systèmes d’exploitations de nos applications. Ce qui va alléger notre structure serveur (Voir Figure \ref{Container}).
+        Le système de conteneur nous permet de nous absoudre de cette contrainte et te faire fonctionner nos application directement sur le système d’exploitation du serveur hôte. Nous avons ainsi plus besoin de virtualiser les différents systèmes d’exploitations de nos applications. Ce qui va alléger notre structure serveur (Voir Figure \ref{Container}).\\
 
         \begin{figure}
           \begin{center}
@@ -487,14 +543,30 @@
         \subsubsection{Conclusion}
         Le concept de la « bêta perpétuelle » est présent chez de nombreux géants du Web tel que Google, Facebook, Amazon, Twitter, Flickr… Peu en font mention dû à la mauvaise image du terme « bêta », qui pour la conscience collective, se réfère à un produit non fini et peu fiable. Prenons en exemple Gmail, la boite aux lettres mails développé par Google, qui jusqu’en 2009 intégrait la mention « bêta » dans son logo. De petites fonctionnalités unitaires sont fréquemment proposés aux utilisateurs. En fonction de leur niveau d’adoption Google les intègrent ou non à la version standard de son service.
 
-        \subsection{Le « Zero downtime deployment »}
-
+        \subsection{Le « Zero Downtime Deployment »}
+        Nous avons vu précédement comment améliorer le «Time To Market » tout en garantissant la qualité des développements. L'étape suivante est de garantir que ces déploiements de plus en plus fréquents n'impactent pas la disponibilité de l'application. Le « Zero Downtime Deployment » (ZDD) offre une approche qui permet de déployer une nouvelle version issus de la build sans interrumption de service. Pou cela le ZDD repose sur trois grands patterns, le « Blue/Green Deployment », le « Canary Release » et le « Dark Launch ».
           \subsubsection{Les patterns}
-          Blue/Green Deployment\\
+          Le « Blue/Green Deployment » est le pattern de base du ZDD. L’application, hébergée sur au moins deux chaines applicatives, déploie sa version N+1 sur une des chaînes (ou plusieurs) tandis que le service en ligne est maintenu en version N sur les autres chaines applicatives (Voir Figure \ref{BlueGreen}).\\
 
-          Canary Release\\
+          \begin{figure}
+            \begin{center}
+              \includegraphics[scale=0.7]{images/BlueGreenDeployment.png}
+            \end{center}
+            \caption{Schéma de pattern « Blue/Green Deployment »}
+            \label{BlueGreen}
+          \end{figure}
 
-          Dark Launch\\
+          Une fois le déploiement effectué, notre nouvelle version doit être testé par une population restreinte d’utilisateurs. Le « Canary Release » confronte la version N+1 à une niche d’utilisateurs cibles tandis que la version N reste accessible à la majorité des utilisateurs (Voir Figure \ref{CanaryRelease}).\\
+
+          \begin{figure}
+            \begin{center}
+              \includegraphics[scale=0.6]{images/CanaryRelease.png}
+            \end{center}
+            \caption{« Schéma de pattern Canary Release »}
+            \label{CanaryRelease}
+          \end{figure}
+
+          La dernière étape du ZDD est le test de charge de notre nouvelle application. Le « Dark Launch » stimule progressivement le traffic généré par l’utilisateur afin de valider les performances et la scalabilité de notre plateforme. La stimulation progressive du traffic permet de préparer et d’optimiser au mieux notre plateforme afin que la mise en production finale de notre application se déroule sans problème.
 
           \subsubsection{La mise en oeuvre}
           Load balancer\\
