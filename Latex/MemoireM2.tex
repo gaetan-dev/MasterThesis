@@ -5,6 +5,7 @@
 \usepackage[francais]{babel} 		% Permet de charger le package babel en lui indiquant que l'on veut travailler en français.
 \usepackage[cyr]{aeguill} 			% Permet d'utiliser les guillemets français («»).
 \usepackage{graphicx}           % Permet l'importation d'image.
+\usepackage{boxedminipage}   % Encadrer un paragraphe.
 
 
 \title{Améliorer la qualité des logiciels avec l'Intégration Continue}
@@ -427,30 +428,64 @@
         La compréhension de ces mesures et de l'analyse des rapports d'inspection peut une réelle plus-value sur le temps investi. Les problèmes de maintenabilité peuvent être repérés dès le début et les risques de défauts peuvent être réduits.
 
 
-    \section{Déploiement Continue}
-    L'un des objectifs de l’Intégration Continue est d'avoir un logiciel prêt et fonctionnel pour le déploiement à tout moment du développement. Toutes les étapes vues précédemment sont des parties du processus de déploiement visant à générer les artefacts de logiciels fournis avec les dernières modifications de code disponibles dans un environnement de test \cite{Duv07}. Une fois l’application packagée il est possible de l'installer automatiquement sur les serveurs de production avec le Déploiement Continue. Pour cela, nous avons six étapes de haut niveau:\\
-    \begin{itemize}
-      \item étiqueter les actifs d'un référentiel,
-      \item produire un environnement propre, exempt d'hypothèses,
-      \item générer et étiqueter une version directement à partir du référentiel et l'installer sur la machine cible,
-      \item effectuer les tests avec succès à tous les niveaux dans un clone de l'environnement de production,
-      \item créer des rapports de rétroaction de build,
-      \item	si nécessaire, la release peut être annulée en utilisant des étiquettes dans le système de contrôle de version.\\
-    \end{itemize}
+    \section{Déploiement Continu}
+    L'un des objectifs de l’Intégration Continue est d'avoir un logiciel prêt et fonctionnel pour le déploiement à tout moment du développement. Toutes les étapes vues précédemment sont des parties du processus de déploiement visant à générer les artefacts de logiciels fournis avec les dernières modifications de code disponibles dans un environnement de test \cite{Duv07}. Une fois l’application packagée il est possible de l'installer automatiquement sur les serveurs de production avec le Déploiement Continu. Le Déploiement Continu constitue l'ensemble des outils, méthodologies et bonnes pratiques permettant le déploiement de l'application sur un environnement de production en un clique.
 
-      \subsection{Les bonnes pratiques du Déploiement Continue}
+      \subsection{Les bonnes pratiques du Déploiement Continu}
+      Pour cela Paul Duvall définit six bonnes pratiques de haut niveau afin de réaliser convenablement un bon Déploiement Continu:\\
+      \begin{itemize}
+        \item étiqueter les actifs d'un référentiel,
+        \item produire un environnement propre, exempt d'hypothèses,
+        \item générer et étiqueter une version directement à partir du référentiel et l'installer sur la machine cible,
+        \item effectuer les tests avec succès à tous les niveaux dans un clone de l'environnement de production,
+        \item créer des rapports de rétroaction de build,
+        \item	si nécessaire, la release peut être annulée en utilisant des étiquettes dans le système de contrôle de version.\\
+      \end{itemize}
 
-        \subsubsection{Etiqueter les actifs d’un référentiel}
+        \subsubsection{Etiqueter (labéliser) les actifs d’un référentiel}
+        La création de label au niveau du référentiel facilite l'identification et le suivi des actifs, en définissant clairement un groupe de fichiers comme appartenant à un ensemble. De plus, les étiquettes permettent un suivi historique d'un groupe de fichiers et pas seulement comme des fichiers individuels qui peuvent être sur différentes versions à un moment donné \ref{Labels Referential}.
+
+        \begin{figure}
+          \begin{center}
+            \includegraphics[scale=0.7]{images/Labels.png}
+          \end{center}
+          \caption{Exemple de référentiel labélisé contenant Foo.cs et Bar.cs}
+          \label{Labels Referential}
+        \end{figure}
 
         \subsubsection{Produire un environnement propre}
+        Afin de réduire les risques comportementaux de l’application il est important de ne pas faire d’hypothèse sur son fonctionnement au travers des différents environnements. Idéalement l’intégralité des environnements doivent être virtualisé et automatisé afin d’être redéployé à chaque déploiement et ainsi garantir un environnement « propre ».\\
+        Voici les grandes étapes de la virtualisation et l’automatisation d’un environnement :\\
+        \begin{itemize}
+          \item mise en place du système d’exploitation (OS),
+          \item configuration de l’OS (utilisateurs, firewalls, …),
+          \item mise en place des composants du serveur (serveur web, base de données, …),
+          \item configuration du serveur,
+          \item installation des outils tiers (frameworks web, librairies, …),
+          \item	configuration des divers softwares.\\
+        \end{itemize}
 
         \subsubsection{Etiqueter chaque build}
+        Afin de créer un identifiant unique pour chaque build il est impératif que le code du référentiel ait été labélisé (cf. Etiqueté (labélisé) les actifs d’un référentiel). Le deuxième point clé est la mise en place d’un schéma de nommage commun aux diverses builds. Labéliser chaque build fournit un moyen simple de suivre efficacement la version du code et son environnement d’exécution. En outre, les défauts, les améliorations et les nouvelles fonctionnalités peuvent être émises contre cette instance de code source.\\\\
+
+        \begin {boxedminipage} {11cm}
+          Notez la différence entre une étiquette de référentiel et une étiquette de build. Les étiquettes de référentiel désignent un ensemble de fichiers non compilés tandis que les étiquettes de build désignent les fichiers binaires en sortie d’une build. Les schémas de nommage sont cependant liés. Par exemple si l’étiquette du référentiel est 4-32 celle de la build sera 4-32.01.
+        \end {boxedminipage}\\
 
         \subsubsection{Exécuter tous les tests}
+        Avant le packaging et le déploiement d’une build l’intégralité des tests doivent être exécutés et validés, des tests unitaires aux tests fonctionnels. Ces tests doivent être exécutés dans un environnement aussi proche que possible que de l’environnement de production.
 
-        \subsubsection{Créer des build feedback reports}
+        \subsubsection{Créer des rapports de build}
+        Les rapports de build fournissent des informations à propos des actions effectués au cours de la build (tests, analyses statiques …), des fichiers modifiés, des issues impactés ainsi que des changements majeurs par rapport à la build précédente. Ces rapports sont généralement composés de :\\
+        \begin{itemize}
+          \item un rapport de test qui indique le nombre de tests effectués, le nombre de succès et d’échec et le pourcentage de code couvert par les tests,
+          \item un fichier différentiel qui informe des changements exacts dans le code source,
+          \item un rapport d’analyse statique qui avertit des violations des bonnes pratiques de développement,
+          \item un Changelog qui recueille les notes du développeur (résolution de problèmes, nouvelles fonctionnalités ...).\\
+        \end{itemize}
 
         \subsubsection{Capacité à effectuer un rollback}
+        Quelques fois l’inévitable se produit et le logiciel déployé en production ne fonctionne plus correctement. La capacité à annuler une mise en production est inestimable dans le Déploiement Continu. Lorsque le principe d’étiquetage est correctement utilisé la demande d’une version antérieur de l’application est simple (rollback). Par ailleurs si l’ensemble de la chaine de déploiement est automatisé le temps nécessaire au rollback est minime.
 
       \subsection{La dockerisation}
       Le site officiel de Docker définit son outils comme tel:\\
@@ -626,7 +661,7 @@
 
         \subsection{Documentation Continue}
 
-        \subsection{Déploiement Continue}
+        \subsection{Déploiement Continu}
 
         \subsection{Feedback Continue}
 
