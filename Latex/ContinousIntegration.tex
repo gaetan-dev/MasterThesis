@@ -1,4 +1,4 @@
-\chapter{Intégration Continue}
+\chapter{Intégration Continue} \label{ContinousIntegration}
 
   \section{Histoire}
   Dans l’industrie logicielle, l’intégration d’un projet logiciel est souvent un moment lourd et douloureux. La mise en commun des différents modules composants l’application entraine généralement de graves problèmes d’intégration. Les modules fonctionnent correctement individuellement mais se confrontent à des problèmes de synergie. La résolution de ces problèmes demande un effort important qui s’accroisse avec la complexité du système. L’introduction des techniques et méthodologies de l’Intégration Continue, estompent les problèmes d’intégration jusqu’à les réduire en un non-évènement.\\
@@ -40,7 +40,7 @@
     \emph{« L'Intégration Continue est une pratique de développement logiciel où les membres d'une équipe intègrent leur travail régulièrement, chaque développeur intègre au moins quotidienne une version - conduisant à de multiples intégrations journalières. Chaque intégration est vérifiée par une build automatique (y compris le test) pour détecter les erreurs d'intégration le plus rapidement possible. De nombreuses équipes trouvent que cette approche conduit à réduire considérablement les problèmes d'intégration et permet à l'équipe de développer des logiciels cohésifs plus rapidement. »}\\
   \end{quotation}
 
-    \subsection{Les bénéfices de l’Intégration Continue}
+    \subsection{Les bénéfices de l’Intégration Continue}\label{Benefits}
     Selon Paul Duvall \cite{Duv07}, l'intégration logiciel n’est pas un problème dans les petites équipes (un à deux développeurs), mais lorque le nombre de collaborateurs se multiplie ou que diverses équipes commencent à travailler ensemble sur un même projet, l'intégration logiciel devient un problème, car plusieurs acteurs peuvent être amenés à modifier simultanément des morceaux de code devant fonctionner ensemble. Vérifier que les divers composants logiciels interdépendants continuent de fonctionner correctement ensemble soulève la nécessité d'intégrer plus tôt et plus souvent. Les points suivants décrivent les différents effets bénéfiques que Paul Duvall a été en mesure d'identifier.
 
       \subsubsection{Réduire les risques}
@@ -81,7 +81,7 @@
 
     Dans un projet logiciel, il est courant que de nombreux développeurs travaillent simultanément sur une même partie de code.  Par conséquent avant d’intégrer notre partie au code source, il est nécessaire de vérifier qu’aucune modification n’ait été faite par un développeur tiers par le biais d’une nouvelle mise à jour. Dans certains cas, il est possible que d’autres développeurs aient modifié exactement les mêmes lignes de code que nous, produisant ainsi un ou plusieurs conflits. Dans ce cas, les conflits doivent être immédiatement résolus et tous les tests ré-effectués. Il est possible que dans cet intervalle une nouvelle version soit disponible sur le référentiel, l'étape précédente doit être répétée jusqu'à ce qu'aucun nouveau changement ne soit détecté. Une fois cette synchronisation effectuée le check-in peut être fait.
 
-    \subsection{Comment l’Intégration Continue s’appuie-t-elle sur d’autres pratiques de développement}
+    \subsection{Comment l’Intégration Continue s’appuie-t-elle sur d’autres pratiques de développement}\label{Developers}
     L’Intégration Continue comprend un ensemble de règles que tous développeurs doient suivre :
 
     \begin{enumerate}
@@ -103,7 +103,7 @@
 
     Pratiquer l’Intégration Continue exige de la discipline de la part des développeurs. Ils devront appliquer avec rigueur les pratiques de développement vues précédemment. Une fois le développement de la tâche effectué, le développeur doit exécuter une build sur sa propre machine de développement. On appelle cela une build privée. Cette étape permet de vérifier que les modifications apportées n’ont pas endommagé l'intégration avec le reste du code source. Il est important d'exécuter la build privée avant de valider les changements dans le référentiel de contrôle de version, car soumettre un code erroné peut empêcher les autres développeurs de correctement travailler. Une fois l’exécution de la build privée effectuée avec succès, le développeur peut valider les modifications et les tests. Si l'intégration de la build échoue malgré ses précautions, réparer cette build est la priorité numéro un.
 
-    \subsection{Le référentiel de contrôle de version}
+    \subsection{Le référentiel de contrôle de version}\label{SCM}
     L'intégration continue ne peut pas se faire sans référentiel de contrôle de version. Le référentiel de contrôle de version, également connu sous le nom de gestionnaire de code source (SCM), est un système utilisé pour stocker le code source et d'autres aspects du logiciel (comme la documentation, les specs, ...) de manière centralisée. Il assure également le suivi de l'historique des versions et modifications effectuées au cours du développement. Les développeurs logiciels ont la possibilité de revenir à une version antérieure ou à la révision d'un logiciel et de prendre connaissances des changements apportés sur toutes révisions données. Ce référentiel fournit un point d'accès unique au code source pour les développeurs et le système d’Intégration Continue. Il peut être constitué de différentes branches du logiciel stocké. Une branche peut être créée pour la réécriture majeure d’un morceau de code ou pour le prototypage d’une idée intéressante qui pourrait ne pas se retrouver dans le produit final. La build d’intégration est exécutée sur la branche principale du référentiel de contrôle de version \cite{Duv07}. « Master » est la branche de code source où la plupart de la mise au point a lieu. Certains systèmes de contrôle de version appellent cela « tunk » ou « head ». La ligne principale se doit d’être toujours stable et la build d’intégration ne doit jamais échouée quand elle est intégrée au référentiel.
 
     \begin{figure}
@@ -113,14 +113,14 @@
       \caption{Ligne de temps d'un référentiel de contrôle de version}
     \end{figure}
 
-    \subsection{Le serveur d’Intégration Continue}
+    \subsection{Le serveur d’Intégration Continue}\label{ServeurCI}
     Le serveur d’Intégration Continue est l'orchestrateur de l'ensemble du processus. Il exécute la build d'intégration lorsqu'une modification a été apportée au référentiel. Trois approches sont à prendre en compte.\\
 
     La première est la configuration d’un « post commit hook » au niveau du gestionnaire de code source. Le référentiel de contrôle de version peut-alors immédiatement avertir le serveur d’Intégration Continue qu’une modification a été ajoutée et validée. De cette façon une build d’intégration est exécutée à chaque commit.\\
 
     Une autre approche, dénommée « polling approach » \cite{Duv07} est de vérifier les changements à intervalles réguliers (de l’ordre de la minute). De ce fait plusieurs changements peuvent être effectués entre chaque build.\\
 
-    La troisième et dernière option, consiste à intégrer une copie du référentiel principal, accessible uniquement par le serveur d’Intégration Continue, au niveau du serveur lui-même \ref{IC server}. Les développeurs n’ont ainsi accès qu’au référentiel du serveur d’Intégration Continue. Ce dernier peut alors être configuré afin de rejeter les modifications apporté au référentiel ne respectant pas les tests ou les métriques qualités prédéfinies. Garantissant ainsi la qualité de l’application.\\\\
+    La troisième et dernière option, consiste à intégrer une copie du référentiel principal, accessible uniquement par le serveur d’Intégration Continue, au niveau du serveur lui-même \ref{IC server}. Les développeurs n’ont ainsi accès qu’au référentiel clone du serveur d’Intégration Continue. Ce dernier peut alors être configuré afin de rejeter les modifications apporté au référentiel ne respectant pas les tests ou les métriques qualités prédéfinies. Garantissant ainsi la qualité de l’application.\\\\
 
     \begin{figure}
       \begin{center}
@@ -161,16 +161,30 @@
 
     Parfois plusieurs environnements sont nécessaires pour builder sur différentes plates-formes. La virtualisation des serveurs apportent la réponse à ce problème. En utilisant une infrastructure de virtualisation bien établie, il est assez facile d’exécuter des instances esclaves multiples sur un seul nœud physique. Ces instances pouvant fonctionner sous différents systèmes d’exploitation. Certains logiciels de serveur d’Intégration Continue offre la possibilité à la build d’intégration de fonctionner simultanément sur ces différentes instances et de collecter les résultats pour chaque environnement.\\
 
-  \section{Caractéristique de l’Intégration Continue}
-  Selon Paul Duvall \cite{Duv07} seules quatre caractéristiques sont nécessaires à l’Intégration Continue :\\
-  \begin{itemize}
-    \item une connexion à un référentiel de contrôle de version,
-    \item un script de compilation,
-    \item un mécanisme de rétroaction,
-    \item un processus pour intégrer les modifications au code source (manuelles ou serveur d’Intégration Continue).\\
-  \end{itemize}
+  \section{Caractéristique de l’Intégration Continue}\label{Features of Continuous Integration}
+    \subsection{Inspection Continue}
+    Le code source peut être examiné manuellement et/ou automatiquement. La revue de code manuelle peut être effectuée selon deux principes, le « pair programming » (écriture du code en binôme) ou le « code review » (session collective de relecture du code). Elle améliore la qualité algorithmique et syntaxique du code source de l’application et permet aux développeurs d’échanger sur les bonnes pratiques. Pour une revue de code automatique, de nombreux analyseurs de code statique sont disponibles selon les langages de développement. Ces outils analysent les fichiers sources dans le but de souligner les violations de règles prédéfinies propre au langage et d’améliorer la syntaxe de nos lignes de code.\\
 
-  Ces éléments seuls sont nécessaires à la construction d’un système d’Intégration Continue efficace, qui est expliqué plus en détail dans les sections suivantes.
+    La différence entre la revue de code manuelle - faite par des humains - et la revue de code automatique - faite par des outils d’analyses - est double. Exécuter les analyseurs de code statique est peu cher et une fois automatisés ils garantissent une relative propreté au code source. De plus un ordinateur est toujours objectif et ne se lasse pas d’inspecter l’intégralité du code à chaque fois qu’un changement est engagé dans le référentiel de contrôle de version.\\
+
+    Les analyses statiques de code automatisé sont efficientes pour des grandes bases de code. Elles permettent aux développeurs de se concentrer sur les parties importantes. Elles offrent des métriques de qualité sous la forme de rapport d’inspection après chaque exécution. Les revues automatisées ne remplacent pas les revues manuelles, elles permettent de recentrer l’intelligence humaine là où elle est nécessaire.\\
+
+    De nombreux IDE (environnement de développement intégré) intègrent des fonctionnalités d’inspection pour aider les développeurs dès l’écriture du code avec une mise en forme automatisée, la mise en évidence des variables non utilisées, l’utilisation illégale de certain élément… Il est fortement encouragé de les utiliser mais ne remplace en aucun cas les revues de code.\\
+
+    Il existe également des outils qui proposent de réécrire certain bout de code selon une convention particulière, de détecter les blocs de code en double…
+
+      \subsubsection{Rapport d’inspection}
+      Les outils d’analyse statique de code fournissent un grand nombre de mesures et de rapports, encore faut-il les interpréter. Depuis quelques décennies des chercheurs étudient ces mesures afin de trouver une corrélation entre les défauts soulignés par les analyses et le code source.\\
+
+      Une des principales mesures étudiée est la complexité cyclomatique, qui quantifie la complexité du code source en comptant le nombre de chemins distincts au travers d'un programme représenté sous la forme d'un graphe \cite{Kan03}. Les analystes suggèrent une complexité de 10 car plus grand est ce nombre, plus important sera le risque de défauts \cite{Wat96}. Le moyen le plus efficace pour réduire la complexité cyclomatique d’une application est d'appliquer la technique de la méthode d'extraction et de distribuer la complexité en petits méthodes, plus faciles à gérer, et donc plus testables \cite{Duv07}.\\
+
+      Outre les problèmes de complexités les rapports d’inspection nous fournissent des mesures sur les problèmes liés à l’architecture de notre application; « l’afferent coupling » et « l’efferent coupling ». Ces métriques comptent les nombres de dépendances vers, où à partir d’un objet, soulignant ainsi les risques de responsabilités ou de dépendances trop fortes. Elles permettent de déterminer le niveau de risque dans le maintien et l’évolutivité du code. Duvall introduit l'utilisation de ces deux valeurs combinées pour calculer une valeur d'instabilité.\\
+
+      \begin{center}
+          $Instability=\frac{EfferentCoupling}{EfferentCoupling + AfferentCoupling}$\\
+      \end{center}
+
+      La compréhension de ces mesures et de l'analyse des rapports d'inspection peut une réelle plus-value sur le temps investi. Les problèmes de maintenabilité peuvent être repérés dès le début et les risques de défauts peuvent être réduits.
 
     \subsection{Compilation du code source}
     La compilation du code source est l'une des caractéristiques de base du système d’Intégration Continue. La compilation crée des exécutables binaires à partir de sources lisibles (pour les développeurs). Lors de l'utilisation des langages dynamiques comme Python ou Ruby la compilation est différente. Les binaires ne sont pas compilés, à la place les développeurs ont la possibilité d'effectuer un checking strict, qui peut être considéré comme de la compilation dans le contexte de ces langues \cite{Duv07}.
@@ -219,42 +233,19 @@
       \subsubsection{Ecrire des tests d’échecs}
       L’écrire et l’exécution automatique des tests avec l’Intégration Continue diminue la fréquence des logiciels défectueux. Mais l’Intégration Continue n’est pas infaillible \cite{Duv07}. Si un défaut est trouvé, il doit être immédiatement fixé et pour éviter qu'il se reproduise, un test défectueux devra être implémenté. L'idée sous-jacente est d’améliorer continuellement la qualité de l’application.
 
-    \subsection{Qualimétrie}
+      \subsubsection{Différences entre inspection et test}
+      Le test (vu précédemment) est dynamique et exécute l’application, ou un fragment de l’application, pour tester ses fonctionnalités. L’inspection, quant à elle, analyse le code selon un ensemble de règles prédéfinies. Les deux sont des concepts similaires dans le sens ou aucun ne modifient le code source, ils ne font que remonter les problèmes résidant dans l’application.
 
     \subsection{Base de données d’intégration}
     L’Intégration Continue ne se limite pas à la construction du code source, elle peut également être utilisée dans le développement des bases de données. Les bases de données sont des parties intégrantes des applications et ont donc besoin d’être intégré dans le processus d’Intégration Continue. La création d’une base de données fonctionnelle lors d’une build d’intégration nécessite un ensemble de scripts stocké dans le référentiel de contrôle de version. Ces scripts comprennent les définitions des tables, les procédures stockées, le partitionnement... L’exécution des tests fonctionnels nécessite des données « réelles » afin de garantir un environnement proche de la production. Des scripts de « données », exécutés après la création de la base de données complètent la mise en place d’une base de données fonctionnelle.\\
 
     Par exemple, lorsqu’un développeur ou un administrateur de base de données (DBA) apporte une modification à script de base de données et le valide au niveau du système de contrôle de version (check-in), la build d’intégration (la même que celle utilisée pour l’intégration du code source) construit la nouvelle base de données et lance les tests.
 
-    \subsubsection{Test unitaire sur les fonctions de base de données}
-    Pour des raisons de sécurités et de performances les fonctions propres aux bases de données sont stockées et exécutées par elles-mêmes. On les appelle alors « procédures stockées ». Comme pour les méthodes de l’application ces procédures doivent être testées et automatisées par des scripts qui seront exécutés lors de la build d’intégration.
+      \subsubsection{Test unitaire sur les fonctions de base de données}
+      Pour des raisons de sécurités et de performances les fonctions propres aux bases de données sont stockées et exécutées par elles-mêmes. On les appelle alors « procédures stockées ». Comme pour les méthodes de l’application ces procédures doivent être testées et automatisées par des scripts qui seront exécutés lors de la build d’intégration.
 
-    \subsection{Inspection Continue}
-    Le code source peut être examiné manuellement et/ou automatiquement. La revue de code manuelle peut être effectuée selon deux principes, le « pair programming » (écriture du code en binôme) ou le « code review » (session collective de relecture du code). Elle améliore la qualité algorithmique et syntaxique du code source de l’application et permet aux développeurs d’échanger sur les bonnes pratiques. Pour une revue de code automatique, de nombreux analyseurs de code statique sont disponibles selon les langages de développement. Ces outils analysent les fichiers sources dans le but de souligner les violations de règles prédéfinies propre au langage et d’améliorer la syntaxe de nos lignes de code.\\
-
-    La différence entre la revue de code manuelle - faite par des humains - et la revue de code automatique - faite par des outils d’analyses - est double. Exécuter les analyseurs de code statique est peu cher et une fois automatisés ils garantissent une relative propreté au code source. De plus un ordinateur est toujours objectif et ne se lasse pas d’inspecter l’intégralité du code à chaque fois qu’un changement est engagé dans le référentiel de contrôle de version.\\
-
-    Les analyses statiques de code automatisé sont efficientes pour des grandes bases de code. Elles permettent aux développeurs de se concentrer sur les parties importantes. Elles offrent des métriques de qualité sous la forme de rapport d’inspection après chaque exécution. Les revues automatisées ne remplacent pas les revues manuelles, elles permettent de recentrer l’intelligence humaine là où elle est nécessaire.\\
-
-    De nombreux IDE (environnement de développement intégré) intègrent des fonctionnalités d’inspection pour aider les développeurs dès l’écriture du code avec une mise en forme automatisée, la mise en évidence des variables non utilisées, l’utilisation illégale de certain élément… Il est fortement encouragé de les utiliser mais ne remplace en aucun cas les revues de code.\\
-
-    Il existe également des outils qui proposent de réécrire certain bout de code selon une convention particulière, de détecter les blocs de code en double…
-
-      \subsubsection{Différences entre inspection et test}
-      Le test (vu précédemment) est dynamique et exécute l’application, ou un fragment de l’application, pour tester ses fonctionnalités. L’inspection, quant à elle, analyse le code selon un ensemble de règles prédéfinies. Les deux sont des concepts similaires dans le sens ou aucun ne modifient le code source, ils ne font que remonter les problèmes résidant dans l’application.
-
-      \subsubsection{Rapport d’inspection}
-      Les outils d’analyse statique de code fournissent un grand nombre de mesures et de rapports, encore faut-il les interpréter. Depuis quelques décennies des chercheurs étudient ces mesures afin de trouver une corrélation entre les défauts soulignés par les analyses et le code source.\\
-
-      Une des principales mesures étudiée est la complexité cyclomatique, qui quantifie la complexité du code source en comptant le nombre de chemins distincts au travers d'un programme représenté sous la forme d'un graphe \cite{Kan03}. Les analystes suggèrent une complexité de 10 car plus grand est ce nombre, plus important sera le risque de défauts \cite{Wat96}. Le moyen le plus efficace pour réduire la complexité cyclomatique d’une application est d'appliquer la technique de la méthode d'extraction et de distribuer la complexité en petits méthodes, plus faciles à gérer, et donc plus testables \cite{Duv07}.\\
-
-      Outre les problèmes de complexités les rapports d’inspection nous fournissent des mesures sur les problèmes liés à l’architecture de notre application; « l’afferent coupling » et « l’efferent coupling ». Ces métriques comptent les nombres de dépendances vers, où à partir d’un objet, soulignant ainsi les risques de responsabilités ou de dépendances trop fortes. Elles permettent de déterminer le niveau de risque dans le maintien et l’évolutivité du code. Duvall introduit l'utilisation de ces deux valeurs combinées pour calculer une valeur d'instabilité.\\
-
-      \begin{center}
-          $Instability=\frac{EfferentCoupling}{EfferentCoupling + AfferentCoupling}$\\
-      \end{center}
-
-      La compréhension de ces mesures et de l'analyse des rapports d'inspection peut une réelle plus-value sur le temps investi. Les problèmes de maintenabilité peuvent être repérés dès le début et les risques de défauts peuvent être réduits.
+    \subsection{La documentation}
+    Les méthodes de développement agile mise en place par eXtreme Programming mettent l'accent sur le « working software over comprehensive documentation » \cite{HF01}. La documentation est directement intégrée dans le code source et respecte les conventions de nommage propre à chaque langage. Lorsque ce dernière est correctement intégrée dans le code source l'Intégration Continue peut utiliser des outils afin de mettre à jour la documentation à chaque construction (Javadoc, NDoc, Pydoc, ...). Ces outils peuvent également être utilisés pour créer des diagrammes de classes ou de dépendances. Tous ces documents générés automatiquement sont basés sur le code source présent dans le référentiel de contrôle de version ce qui offre la documentation et le status d'avancement en temps réel de l'application.
 
   \section{Déploiement Continu}
   L'un des objectifs de l’Intégration Continue est d'avoir un logiciel prêt et fonctionnel pour le déploiement à tout moment du développement. Toutes les étapes vues précédemment sont des parties du processus de déploiement visant à générer les artefacts de logiciels fournis avec les dernières modifications de code disponibles dans un environnement de test \cite{Duv07}. Une fois l’application packagée il est possible de l'installer automatiquement sur les serveurs de production avec le Déploiement Continu. Le Déploiement Continu constitue l'ensemble des outils, méthodologies et bonnes pratiques permettant le déploiement de l'application sur un environnement de production en un clique et sans intervention humaine (sinon nous parlons de Delivery Continu et non de Déploiement Continu).
@@ -315,7 +306,14 @@
       \subsubsection{Capacité à effectuer un rollback}
       Quelques fois l’inévitable se produit et le logiciel déployé en production ne fonctionne plus correctement. La capacité à annuler une mise en production est inestimable dans le Déploiement Continu. Lorsque le principe d’étiquetage est correctement utilisé la demande d’une version antérieur de l’application est simple (rollback). Par ailleurs si l’ensemble de la chaine de déploiement est automatisé le temps nécessaire au rollback est minime.
 
-    \subsection{La conteneurisation}
+    \subsection{Le pipeline de déploiement}\label{DeployementPipeline}
+    L'un des défis de l'automatisation de la build et des tests est la rapidité d'exécution, de sorte que l'on puisse obtenir une rétroaction rapide. Cependant l'exécution complète de certaine tâche peut s'avérer longue. Le pipeline de déploiement \cite{Fow13} est un moyen de régler ce problème en divisant votre build en plusieurs étapes. Comme pour les tests, les étapes fournissant une rétrocation rapide seront exécutées au début du pipeline tandis que les étapes longues seront réservées pour la fin.\\
+
+    Habituellement la prémière étape d'un pipeline de déploiement est la compilation des sources afin de fournir les binaires de l'application aux étapes suivants. Ces étapes peuvent être parallélisées sur de nombreuses autres machines. Comme son nom l'indique, la dernière étape d'un pipeline de déploiement est le déploiement de l'application dans son environnement de production.\\
+
+    Globalement l'objectif d'un pipeline de déploiement est de détecter les changements qui conduiront à des problèmes en production. Ceux-ci peuvent inclure les performances, la sécurité ou des problèmes liés à l'utilisation. La pipeline de déploiement doit permettre la collaboration entre les différentes entités impliquées dans le projet et fournir une visibilité claire et unique sur le flux des changements du système.
+
+    \subsection{La conteneurisation}\label{Containers}
     Le site officiel de Docker, leader mondial dans les solutions de contenerisation définit son outils comme tel:\\
 
     \begin{quotation}
@@ -415,7 +413,7 @@
           \begin{center}
             \includegraphics[scale=0.7]{images/BlueGreenDeployment.png}
           \end{center}
-          \caption{Schéma de pattern « Blue/Green Deployment »}
+          \caption{Schéma du pattern « Blue/Green Deployment »}
           \label{BlueGreen}
         \end{figure}
 
@@ -425,7 +423,7 @@
           \begin{center}
             \includegraphics[scale=0.6]{images/CanaryRelease.png}
           \end{center}
-          \caption{« Schéma de pattern Canary Release »}
+          \caption{Schéma du pattern « Canary Release »}
           \label{CanaryRelease}
         \end{figure}
 
@@ -433,6 +431,7 @@
 
         \subsubsection{La mise en oeuvre}
         Le point clé du ZDD est d'associer le mécanisme de répartition de charge (Load Balancer) à la cinématique de déploiement. Cette mise en oeuvre s'articule autours de trois grands temps (Voir Figure \ref{LoadBalancer}):\\
+
         \begin{itemize}
           \item le load balancer déconnecte de une à x chaine(s) de production sur laquelle est déployée la version N+1,
           \item une fois cette migration effective, le load balancer dirige une partie de ses utilisateurs vers cette nouvelle chaine contenant la version N+1,
@@ -443,14 +442,16 @@
           \begin{center}
             \includegraphics[scale=0.6]{images/LoadBalancer.png}
           \end{center}
-          \caption{« Schéma de la mise en oeuve du Zero Downtime Deployment »}
+          \caption{Schéma de la mise en oeuve du « Zero Downtime Deployment »}
           \label{LoadBalancer}
         \end{figure}
 
       \subsection{Le « Flipping Feature »}
       Les organisations appuyant leur service de livraison de code sur le Déploiement Continu se sont rapidemment confronté à une limite; comment commiter fréquemment sur le référentiel de source tout en garantissant la stabilité de l’application, toujours prête pour la production dans le cadre de fonctionnalités longues et complexes ? Deux possiblités s'offrent aux développeurs; créer une branche parallèle au niveau du référentiel de code et la maintenir ou créer une branche au niveau du code, le « Flipping Feature ».\\
       Le « Flipping Feature » permet d'activer ou de désactiver des fonctionnalités de l'application à chaud - directement en production sans relivraison de code. Le mécanisme est très simple, il suffit de conditionner l'exécution du code de la fonctionnalité avec un « if » qui ira regarder dans un fichier de configuration ou d'interroger une base de données afin de savoir si la fonctionnalité est activée ou non.\\
+
       Ce pattern offre quatre axes d'amélioration aux applications:\\
+
       \begin{itemize}
         \item \textbf{sécuriser le déploiement}: l'activation et la désactivation d'une fonctionnalité à chaud permet d'éviter un processus de rollback,
         \item \textbf{expérimenter pour améliorer le produit}: il est possible d'étendre le « Flipping Feature » à une sous population d'utilisateur, et en fonction de leur retour d'expérience activé la fonctionnalité ou non à l'intégralité des utilisateurs,
