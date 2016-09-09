@@ -1,0 +1,123 @@
+\documentclass{report}
+
+\usepackage[utf8]{inputenc} 		% Permet d'utiliser des sources LaTeX contenant des caractères accentués.
+\usepackage[T1]{fontenc}				% Permet d'utiliser des sources LaTeX contenant des caractères accentués.
+\usepackage[francais]{babel} 		% Permet de charger le package babel en lui indiquant que l'on veut travailler en français.
+\usepackage[cyr]{aeguill} 			% Permet d'utiliser les guillemets français («»).
+\usepackage{graphicx}           % Permet l'importation d'image.
+\usepackage{boxedminipage}      % Encadrer un paragraphe.
+\usepackage{glossaries}
+\makeglossaries
+
+\newglossaryentry{pattern}{name={pattern},description={Solution générique à un type de problème fréquemment rencontré, en décrivant et formalisant les concepts sous-jacents à cette solution.}}
+\newglossaryentry{build jobs}{name={build jobs},description={Cela correspond aux différentes tâches du processus de build.}}
+\newglossaryentry{open source}{name={open source},description={Logiciel libre redistribution, d'accès au code source et de création de travaux dérivés}}
+\newglossaryentry{framework}{name={framework},description={Ensemble d'outils et de composants logiciels.}}
+\newglossaryentry{TDD}{name={TDD},description={Test Driven Development ou Développement Dirigé par les Tests.}}
+\newglossaryentry{DBA}{name={DBA},description={Administrateur de bases de données.}}
+\newglossaryentry{check-in}{name={check-in},description={Validation d'une modification apporté au code source au niveau du système de contrôle de version.}}
+\newglossaryentry{check-out}{name={check-out},description={Récupération du code source au niveau du système de contrôle de version.}}
+\newglossaryentry{rollback}{name={rollback},description={Méthode permettant dans un contexte défini, d'annuler l'ensemble des actions que l'on vient pourtant de réaliser.}}
+\newglossaryentry{LXC}{name={LXC},description={LinuX Container.}}
+\newglossaryentry{VM}{name={VM},description={Machine virtuelle.}}
+\newglossaryentry{CPU}{name={CPU},description={Processeur.}}
+\newglossaryentry{load balancer}{name={load balancer},description={Ensemble de techniques permettant de distribuer une charge de travail entre différents ordinateurs d'un groupe..}}
+\newglossaryentry{build}{name={build},description={Construction d'une application.}}
+\newglossaryentry{commit}{name={commit},description={Etape validant les modifications au niveau de la branche principale du contrôle de version.}}
+\newglossaryentry{IDE}{name={IDE},description={Environnement de Développement Intégré.}}
+\newglossaryentry{scalabilitehorizontale}{name={scalabilité horizontale},description={Possibilité d’ajouter des serveurs d’un type donné.}}
+\newglossaryentry{scalabiliteverticale}{name={scalabilité verticale},description={Possibilité d’upgrader un serveur (ajout de processeurs, RAM, disques…).}}
+\newglossaryentry{pair programming}{name={pair programming},description={Ecriture du code en binôme.}}
+\newglossaryentry{code review}{name={code review},description={Session collective de relecture du code.}}
+\newglossaryentry{authoring}{name={authoring},description={Solution qui permet à ses utilisateurs de créer des applications multimédia pour manipuler des objets multimédias tels que les blogs, les sites d'information...}}
+\newglossaryentry{AEM}{name={AEM},description={Adobe Experience Manager.}}
+\newglossaryentry{npm}{name={npm},description={Node Package Manager.}}
+\newglossaryentry{Nexus}{name={Nexus},description={Gestionnaire de dépôt open source.}}
+\newglossaryentry{GUI}{name={GUI},description={Interface Utilisateur Graphique.}}
+\newglossaryentry{FTP}{name={FTP},description={Protocole de transfert de fichier.}}
+\newglossaryentry{MEP}{name={MEP},description={Mise En Production.}}
+\newglossaryentry{first class}{name={first class},description={Désigne dans les langages de programmation le fait que l'on peut manipuler des fonctions comme n'importe quel objet.}}
+\newglossaryentry{webhook}{name={webhook},description={Mécanisme servant à notifier des éléments externes à une application web qu'un événement a eu lieu sur celle-ci.}}
+\newglossaryentry{IoT}{name={IoT},description={Internet Of Thing - l'internet des objets.}}
+\newglossaryentry{API}{name={API},description={Application Programming Interface - ensemble normalisé de classes, methodes ou fonctions servant de façade par laquelle une application offre ses services aux autre applications.}}
+\newglossaryentry{middleware}{name={middleware},description={Logiciel tiers créant un réseau d'échange entre différentes applications.}}
+\newglossaryentry{ETL}{name={ETL},description={Extract-Transform-Load - technologie informatique intergicielle (middleware) permettant d'effectuer des synchronisations massives d'information d'une source de données vers une autre.}}
+\newglossaryentry{UX}{name={UX},description={EXperience Utilisateur.}}
+\newglossaryentry{trigger}{name={trigger},description={Déclencheur - événement qui provoque l'exécution d'un algorithme.}}
+\newglossaryentry{TFS}{name={TFS},description={Team Foundation Server.}}
+\newglossaryentry{VSTS}{name={VSTS},description={Visual Studio Team Services.}}
+\newglossaryentry{AWS}{name={AWS},description={Amazon Web Services.}}
+\newglossaryentry{EC2}{name={EC2},description={Amazon Elastic Compute Cloud - service de provisionning d'AWS.}}
+\newglossaryentry{S3}{name={S3},description={Amazon Simple Storage Service - service de stockage d'AWS.}}
+\newglossaryentry{RDS}{name={RDS},description={Relational Database Service - service de gestion de base de données d'AWS.}}
+\newglossaryentry{HTTP}{name={HTTP},description={HyperText Transfer Protocol - le protocole de communication client-serveur développé pour le World Wide Web.}}
+\newglossaryentry{REST}{name={REST},description={Representational State Transfer - architecture de communication pour les systèmes hypermédias distribués.}}
+\newglossaryentry{stack trace}{name={stack trace},description={Représentation des piles d'exécution à un moment donné lors de l'exécution d'un programme informatique.}}
+
+\title{Améliorer la qualité des logiciels avec l'Intégration Continue}
+\author{\textsc{Gaëtan Meynier}}
+\date{\today}
+
+\begin{document}
+
+  \begin{titlepage}
+    \centering
+    {\scshape\LARGE Université Paris Dauphine \par}
+    \vspace{1cm}
+	  {\scshape\Large Mémoire de recherche\par}
+    \vspace{0.5cm}
+    Septembre 2016\par
+    \vspace{4.5cm}
+    {\huge\bfseries Améliorer la qualité des logiciels avec l'Intégration Continue\par}
+    \vspace{2cm}
+	  {\Large\itshape Gaëtan Meynier\par}
+    \vspace{5cm}
+	  \vfill
+	    {\bfseries Supervisé par\par}
+      \vspace{0.5cm}
+	    Khalid \textsc{Belhajjame}, Maître de conférence à l'Université Paris Dauphine,
+      Arthur \textsc{Szumowicz}, Consultant en système d'information chez AXA.
+	  \vfill
+  \end{titlepage}
+
+  \tableofcontents                % Table des matières.
+
+  \chapter{Préface}
+
+    \section{Introduction}
+    Depuis maintenant quelques années (il est difficile de donner une date précise), les DSI s’appuient sur la mouvance agile afin de mener à bien leurs projets. Aujourd’hui, les   \gls{pattern}s\footnote{Pattern: solution générique à un type de problème fréquemment rencontré, en décrivant et formalisant les concepts sous-jacents à cette solution.} agiles arrivent à maturité et offrent un éventail de méthodologies adaptables à tous les contextes. Les méthodes agiles garantissent la satisfaction du client et non la conformité aux termes d’un contrat de développement. Elles sont centrées sur la satisfaction des besoins du client et non sur les termes contractuels du projet. Nous n’allons pas aborder en profondeur le concept de l’agilité, ceci n’est pas le propos de ce mémoire, mais nous allons tout de même faire un petit rappel des idées fortes de cette méthodologie. Il faut des cycles courts, quelques semaines tout au plus, et découper le projet en petites tâches puis les hiérarchiser en fonction du besoin. Cela permet d’éviter le superflu et de se concentrer au début de chaque cycle sur ce qui a de la valeur pour l’utilisateur final. Le feedback permanent devient la règle d’or, avec des validations à chaque étape et des techniques ludiques d’évaluation de l’utilité des fonctions. L’agilité offre une meilleure visibilité et permet d’éviter les dérives observées lorsque les développeurs sont isolés. Le changement est autorisé voire encouragé, même tardivement, car c’est un avantage décisif pour le client. Cela permet de ne pas se priver des bonnes idées en cours de route et surtout d’éliminer les mauvaises idées lancées au début du projet. Les méthodes agiles favorisent la co-construction, en intégrant l’annonceur lui-même dans le travail quotidien et en responsabilisant la totalité de l’équipe de développement, créant ainsi un véritable esprit collaboratif et l’ensemble du projet en gagne en qualité.\\
+
+    Cependant, l’agilité, lorsqu’elle est exclusivement cantonnée au développement, se trouve freinée par les tâches d’exploitation. L'Intégration Continue a pour objectif d’étendre les pratiques agilistes à la livraison et au déploiement du projet.
+
+    \section{Motivation}
+    La demande pour l'Intégration Continue a été provoquée par la nécessité d'une plus grande agilité et d'une commercialisation plus rapide, où le « time to market » est la principale motivation. Le processus manuel de livraison actuellement utilisé, qui implique l'exécution manuelle des tests et de la compilation, la copie manuelle des fichiers binaires sur les serveurs, la configuration manuelle du serveur, etc, ne correspond plus aux attentes des entreprises et des consommateurs. De tels scénarios sont longs et complexes mais plus encore, ils sont sujets aux erreurs en raison des interventions manuelles. L'automatisation et la standardisation du déploiement d'une application calqueraient la livraison sur les principes agilistes du développement.
+
+    \section{Scope}
+    Ce mémoire de recherche présente l'utilisation de l'Intégration Continue dans un environnement de production afin d'améliorer la qualité des logiciels. Nous couvrirons les idées de base et les bonnes pratiques ainsi que l'architecture et les outils nécessaires à l'Intégration Continue. Nous étudierons un exemple d'implémentation au sein de la DSI d'AXA France et analyserons les différents processus inhérents à cette nouvelle méthodologie de développement.
+
+    \section{Problèmes de recherche}
+    Le principal objectif de ce mémoire de fin d'étude est d'analyser l'impact de l'Intégration Continue dans la qualité des applications dans un environnement professionnel (DSI d'AXA France). Les questions de recherche peuvent être énoncées comme suit:\\
+    \begin{itemize}
+      \item Qu'apporte l'Intégration Continue dans le développement d'une application ?
+      \item Quelles sont les caractéristiques les plus bénéfiques de l'Intégration Continue ?
+      \item Comment peut-on améliorer l'Intégration Continue ?\\
+    \end{itemize}
+
+    \section{Structure du mémoire}
+    Ce mémoire sera articulé autour de trois grands chapitres. Nous commencerons par étudier l'Intégration Continue comme un processus et analyserons ses principales caractéristiques. Lorsque les bases, idées et concepts sous-jacents seront introduits nous continuerons l'étude de la recherche proprement dite en étudiant la solution d'Intégration Continue mis en place, au sein de la DSI D'AXA France. Dans la dernière partie de ce mémoire nous discuterons des limites et des axes d'amélioration apportés par la solution proposée ainsi que des futures idées de recherche.
+
+  % \input{DevOps}
+
+  \input{ContinousIntegration}
+
+  \input{Implementation}
+
+  \input{MySolution}
+
+  \printglossaries
+  \listoffigures                  % Liste les figures
+  \bibliographystyle{alpha}       % les trois premières lettres du nom de l'auteur accolées aux deux derniers chiffres de l'année de parution
+  \bibliography{MemoireM2}        % mon fichier de base de données s'appelle MemoireM2.bib
+  \appendix
+  \input{CloudComputing}\label{CloudComputing}
+\end{document}
