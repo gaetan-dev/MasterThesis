@@ -421,6 +421,21 @@
           \paragraph{La sécurité} Un des points importants au sein des services informatiques est la sécurité des serveurs. Avec un script Hubot, nous pouvons gérer l'accés aux différents serveurs en fonction des collaborateurs selon un principe d'autorisation; seules les personnes autorisées peuvent effectuer des actions sur les environnements. De plus, notre plate-forme d'Intégration Continue garantit la confidentialité des chaînes de connexion et des mots de passe des serveurs. L'intégralité des données de connexion aux environnements et l'accès à ces derniers étant gérés par Hubot, les risques de perte ou de fuite de ces informations critiques sont ainsi minimisés.
 
       \subsection{Architecture et fonctionnement de la PIC}
+      Dans sa version finale, notre plate-forme d'Intégration Continue est composée d'un serveur permanent « maître » dans le Cloud Amazon Web Services - hébergeant Mattermost (outil de communication asynchrone) le point d'entrée de notre PIC, Hubot (outil d'exécution de scripts) notre robot intelligent et Ansible notre outil de provisionning d'instance - et d'instances éphémères « esclaves », elles aussi dans le Cloud AWS, qui accueillent notre serveur d'Intégration Continue GoCD.\\
+
+      Du point de vue du fonctionnement, nos équipes de travail intéragissent indirectement avec le serveur d'Intégration par le biais de lignes de commande via les chatrooms présentent au sein de la plate-forme de communication et Hubot (Voir Figure \ref{PICv3}).\\
+
+      Comme dans notre version précédente, l'intégralité des déploiements, « maître » comme « esclave », est automatisé et géré par Ansible.
+
+      \begin{figure}
+        \begin{center}
+          \includegraphics[scale=0.5]{images/PICv3.png}
+        \end{center}
+        \caption{Schéma de la troisième version de notre PIC - Cloud II}
+        \label{PICv3}
+      \end{figure}
+
+      \section{Aller plus loin}
       Avant de poursuivre avec l'ultime chapitre de ce mémoire qui a pour vocation de proposer des axes d'améliorations et de nouvelles fonctionnalités à notre solution, nous allons faire un petit récapitulatif des outils, des caractéristiques et des fonctionnalités de notre plate-forme d'Intégration Continue. Pour les outils, nous avons utilisé:\\
 
       \begin{itemize}
